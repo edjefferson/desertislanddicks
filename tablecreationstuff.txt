@@ -1,0 +1,133 @@
+ 
+ 
+ CREATE TABLE IF NOT EXISTS "years" (
+   "id" serial PRIMARY KEY,
+   "year" text DEFAULT NULL,
+   "total_guests" integer,
+   "pages" integer,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ 
+ id
+ year
+ total_guests
+ pages
+ created_at
+ updated_at
+ 
+ CREATE TABLE IF NOT EXISTS "guests" (
+   "id" serial PRIMARY KEY,
+   "name" text DEFAULT NULL,
+   "broadcast_date" date,
+   "bio" text,
+   "url" text,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "choices" (
+   "id" serial PRIMARY KEY,
+   "guest_id" integer DEFAULT NULL,
+   "track_id" integer DEFAULT NULL,
+   "book_id" integer DEFAULT NULL,
+   "luxury_id" integer DEFAULT NULL,
+   "favourite" integer DEFAULT NULL,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "tracks" (
+   "id" serial PRIMARY KEY,
+   "artist" text,
+   "title" text,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "luxuries" (
+   "id" serial PRIMARY KEY,
+   "luxury" text,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "books" (
+   "id" serial PRIMARY KEY,
+   "book" text,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "guest_occupations" (
+   "id" serial PRIMARY KEY,
+   "guest_id" integer DEFAULT NULL,
+   "occupation_id" integer DEFAULT NULL,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "occupations" (
+   "id" serial PRIMARY KEY,
+   "name" text,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ALTER SEQUENCE choices_id_seq RESTART WITH 1;
+ALTER SEQUENCE luxuries_id_seq RESTART WITH 1;
+ALTER SEQUENCE tracks_id_seq RESTART WITH 1;
+ALTER SEQUENCE books_id_seq RESTART WITH 1;
+
+truncate table choices;
+truncate table luxuries;
+truncate table tracks;
+truncate table books;
+
+
+
+
+
+
+ CREATE TABLE IF NOT EXISTS "heat_by_countries" (
+   "id" serial PRIMARY KEY,
+   "country" text DEFAULT NULL,
+   "oecd" integer DEFAULT NULL,
+   "coal" integer DEFAULT NULL,
+   "oil" integer DEFAULT NULL,
+   "gas" integer DEFAULT NULL,
+   "biofuels" integer DEFAULT NULL,
+   "waste" integer DEFAULT NULL,
+   "nuclear" integer DEFAULT NULL,
+   "hydro" integer DEFAULT NULL,
+   "geothermal" integer DEFAULT NULL,
+   "solar_pv" integer DEFAULT NULL,
+   "solar_thermal" integer DEFAULT NULL,
+   "wind" integer DEFAULT NULL,
+   "tide" integer DEFAULT NULL,
+   "other_sources" integer DEFAULT NULL,
+   "total_production" integer DEFAULT NULL,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
+ CREATE TABLE IF NOT EXISTS "tfc_by_countries" (
+   "id" serial PRIMARY KEY,
+   "country" text DEFAULT NULL,
+   "oecd" integer DEFAULT NULL,
+   "coal" integer DEFAULT NULL,
+   "crude_oil" integer DEFAULT NULL,
+   "oil_products" integer DEFAULT NULL,
+   "natural_gas" integer DEFAULT NULL,
+   "nuclear" integer DEFAULT NULL,
+   "hydro" integer DEFAULT NULL,
+   "geothermal_social_etc" integer DEFAULT NULL,
+   "biofuels_and_waste" integer DEFAULT NULL,
+   "electricity" integer DEFAULT NULL,
+   "heat" integer DEFAULT NULL,
+   "total" integer DEFAULT NULL,
+   "created_at" timestamp,
+   "updated_at" timestamp
+ );
+ 
